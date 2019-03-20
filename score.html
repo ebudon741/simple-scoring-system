@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     span{
+        padding:0px 10px;
+    }
+    </style>
+</head>
+<body>
+    <h1><span id="playerone">0</span> <span id="first"></span> <span>vs</span><span id="playertwo">0</span> <span id="second"></span> </h1><br>
+    <input id="top" type="text">
+    <button id="buttonpone">player 1</button>
+    <button id="buttonptwo">player 2</button>
+    <button id="reset">reset</button>
+    <script type="text/javascript">
+
+        playerone=document.querySelector("#playerone");
+        playertwo=document.querySelector("#playertwo");
+        first=document.querySelector("#first");
+        second=document.querySelector("#second");
+        limit=document.querySelector("#top");
+        buttonpone=document.querySelector("#buttonpone");
+        buttonptwo=document.querySelector("#buttonptwo");
+        reset=document.querySelector("#reset");
+
+
+    
+    reset.addEventListener("click",function(){
+        playerone.textContent="0";
+        playertwo.textContent="0";
+        limit.value="0"
+        playerone.style.color="black";
+        playertwo.style.color="black"
+        first.textContent="";
+        second.textContent="";
+    });
+    buttonpone.addEventListener("click",function(e){
+    
+        var lim =  Number(limit.value).valueOf()
+        var playone = Number(playerone.textContent).valueOf();
+        var playtwo = Number(playertwo.textContent).valueOf();
+        
+        
+            if(playone < lim && playtwo < lim){
+                playerone.textContent++;
+            }
+            else if(playerone.textContent == limit.value){
+                playerone.style.color="green";
+                playertwo.style.color="red";
+                first.textContent="winnner";
+                second.textContent="Loser";
+                first.style.color="green";
+                second.style.color="red";
+            } 
+    });
+
+    buttonptwo.addEventListener("click",function(){
+            if(playerone.textContent < limit.value && playertwo.textContent < limit.value){
+                playertwo.textContent++;
+            }
+            else if(playertwo.textContent == limit.value){
+                playerone.style.color="green";
+                playertwo.style.color="red"
+                first.textContent="Loser";
+                second.textContent="Winner";
+                first.style.color="red";
+                second.style.color="green";
+            } 
+    });
+
+
+
+
+
+var name = document.querySelector("#contact-your-name-2").value;
+var email = document.querySelector("#contact-email-2").value;
+var mobile = document.querySelector("#contact-phone-2").value;
+var message = document.querySelector("#contact-message-2").textContent;
+var sendbutton = document.querySelector("#send");
+var contactForm = document.querySelector("#contactForm");
+var validateMessage = document.querySelector("#validateMessage");
+var vemail=email.includes("@");
+var email!=vemail;
+
+sendbutton.addEventListener("click",function(e){
+    e.preventDefault();
+    
+    if(name == "" || email == "" || mobile == "" || message == "" || email){
+        validateMessage.style.display = "block";
+    }else{
+        contactForm.submit()
+    }
+});
+
+    </script>
+</body>
+</html>
